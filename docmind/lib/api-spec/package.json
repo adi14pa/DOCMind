@@ -1,0 +1,13 @@
+{
+  "name": "@workspace/api-spec",
+   "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "codegen": "orval --config ./orval.config.ts && npm run typecheck:libs"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "orval": "^8.9.1"
+  }
+}

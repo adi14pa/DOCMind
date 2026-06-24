@@ -1,0 +1,11 @@
+node_modules
+ #rag-app
+ node_modules
+ .env
+
+ #api-server
+ node_modules
+ .env
+ .build.mjs
+
+ 
