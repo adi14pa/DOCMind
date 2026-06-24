@@ -6,7 +6,7 @@ function Login() {
   const [name, setName] = useState("");
 
   const handleLogin = async () => {
-    const res = await fetch("http://localhost:8000/api/auth/login", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
       method: "POST",
 
       credentials: "include",
@@ -31,21 +31,24 @@ function Login() {
   };
 
   const handleRegister = async () => {
-    const res = await fetch("http://localhost:8000/api/auth/register", {
-      method: "POST",
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/auth/register`,
+      {
+        method: "POST",
 
-      credentials: "include",
+        credentials: "include",
 
-      headers: {
-        "Content-Type": "application/json",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
       },
-
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-      }),
-    });
+    );
 
     const data = await res.json();
 

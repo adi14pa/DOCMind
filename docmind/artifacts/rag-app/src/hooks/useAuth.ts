@@ -5,7 +5,7 @@ export function useAuth() {
     queryKey: ["me"],
 
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/api/auth/me", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/me`, {
         credentials: "include",
       });
 
