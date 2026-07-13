@@ -9,16 +9,16 @@ datasource db {
 
 model RagDocument {
   id            Int               @id @default(autoincrement())
-    userId Int
-  user User @relation(fields:[userId], references:[id])
   filename      String
   originalName  String            @map("original_name")
   pageCount     Int?              @map("page_count")
   chunkCount    Int               @default(0) @map("chunk_count")
   status        String            @default("processing")
   createdAt     DateTime          @default(now()) @map("created_at")
+  userId        Int?              @map("user_id")
   chunks        RagChunk[]
   conversations RagConversation[]
+  user          User?             @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("rag_documents")
 }
@@ -48,13 +48,31 @@ model RagConversation {
   @@map("rag_conversations")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  name      String?
+model CodeReview {
+  id                Int      @id @default(autoincrement())
+  language          String
+  code              String
+  summary           String?
+  findings          String?
+  overallSeverity   String?  @map("overall_severity")
+  bugCount          Int      @default(0) @map("bug_count")
+  securityCount     Int      @default(0) @map("security_count")
+  perfCount         Int      @default(0) @map("perf_count")
+  qualityCount      Int      @default(0) @map("quality_count")
+  bestPracticeCount Int      @default(0) @map("best_practice_count")
+  status            String   @default("pending")
+  createdAt         DateTime @default(now()) @map("created_at")
 
+  @@map("code_reviews")
+}
+
+model User {
+  id        Int           @id @default(autoincrement())
+  email     String        @unique
+  password  String        @map("password_hash")
+  name      String?
+  createdAt DateTime      @default(now()) @map("created_at")
   documents RagDocument[]
 
-  createdAt DateTime @default(now())
+  @@map("users")
 }

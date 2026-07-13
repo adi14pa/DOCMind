@@ -55,7 +55,7 @@ router.post("/register", async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false,
-      sameSite: "none",
+      sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     console.log("COOKIE SET", token);
@@ -118,7 +118,7 @@ router.post("/login", async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false,
-      sameSite: "none",
+      sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
      console.log("COOKIE SET", token);
@@ -149,6 +149,7 @@ router.post("/logout", (req, res) => {
 });
 
 router.get("/me", async (req, res) => {
+  console.log("Cookies:", req.cookies);
   try {
     const token = req.cookies.token;
 

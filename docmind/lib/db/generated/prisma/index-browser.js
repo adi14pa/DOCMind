@@ -122,13 +122,13 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.RagDocumentScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
   filename: 'filename',
   originalName: 'originalName',
   pageCount: 'pageCount',
   chunkCount: 'chunkCount',
   status: 'status',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  userId: 'userId'
 };
 
 exports.Prisma.RagChunkScalarFieldEnum = {
@@ -146,6 +146,22 @@ exports.Prisma.RagConversationScalarFieldEnum = {
   role: 'role',
   content: 'content',
   sources: 'sources',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CodeReviewScalarFieldEnum = {
+  id: 'id',
+  language: 'language',
+  code: 'code',
+  summary: 'summary',
+  findings: 'findings',
+  overallSeverity: 'overallSeverity',
+  bugCount: 'bugCount',
+  securityCount: 'securityCount',
+  perfCount: 'perfCount',
+  qualityCount: 'qualityCount',
+  bestPracticeCount: 'bestPracticeCount',
+  status: 'status',
   createdAt: 'createdAt'
 };
 
@@ -177,6 +193,7 @@ exports.Prisma.ModelName = {
   RagDocument: 'RagDocument',
   RagChunk: 'RagChunk',
   RagConversation: 'RagConversation',
+  CodeReview: 'CodeReview',
   User: 'User'
 };
 

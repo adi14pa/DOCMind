@@ -29,6 +29,11 @@ export type RagChunk = $Result.DefaultSelection<Prisma.$RagChunkPayload>
  */
 export type RagConversation = $Result.DefaultSelection<Prisma.$RagConversationPayload>
 /**
+ * Model CodeReview
+ * 
+ */
+export type CodeReview = $Result.DefaultSelection<Prisma.$CodeReviewPayload>
+/**
  * Model User
  * 
  */
@@ -184,6 +189,16 @@ export class PrismaClient<
     * ```
     */
   get ragConversation(): Prisma.RagConversationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.codeReview`: Exposes CRUD operations for the **CodeReview** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CodeReviews
+    * const codeReviews = await prisma.codeReview.findMany()
+    * ```
+    */
+  get codeReview(): Prisma.CodeReviewDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -631,6 +646,7 @@ export namespace Prisma {
     RagDocument: 'RagDocument',
     RagChunk: 'RagChunk',
     RagConversation: 'RagConversation',
+    CodeReview: 'CodeReview',
     User: 'User'
   };
 
@@ -647,7 +663,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "ragDocument" | "ragChunk" | "ragConversation" | "user"
+      modelProps: "ragDocument" | "ragChunk" | "ragConversation" | "codeReview" | "user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -873,6 +889,80 @@ export namespace Prisma {
           }
         }
       }
+      CodeReview: {
+        payload: Prisma.$CodeReviewPayload<ExtArgs>
+        fields: Prisma.CodeReviewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CodeReviewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CodeReviewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload>
+          }
+          findFirst: {
+            args: Prisma.CodeReviewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CodeReviewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload>
+          }
+          findMany: {
+            args: Prisma.CodeReviewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload>[]
+          }
+          create: {
+            args: Prisma.CodeReviewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload>
+          }
+          createMany: {
+            args: Prisma.CodeReviewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CodeReviewCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload>[]
+          }
+          delete: {
+            args: Prisma.CodeReviewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload>
+          }
+          update: {
+            args: Prisma.CodeReviewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload>
+          }
+          deleteMany: {
+            args: Prisma.CodeReviewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CodeReviewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CodeReviewUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload>[]
+          }
+          upsert: {
+            args: Prisma.CodeReviewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CodeReviewPayload>
+          }
+          aggregate: {
+            args: Prisma.CodeReviewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCodeReview>
+          }
+          groupBy: {
+            args: Prisma.CodeReviewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CodeReviewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CodeReviewCountArgs<ExtArgs>
+            result: $Utils.Optional<CodeReviewCountAggregateOutputType> | number
+          }
+        }
+      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -1058,6 +1148,7 @@ export namespace Prisma {
     ragDocument?: RagDocumentOmit
     ragChunk?: RagChunkOmit
     ragConversation?: RagConversationOmit
+    codeReview?: CodeReviewOmit
     user?: UserOmit
   }
 
@@ -1223,98 +1314,98 @@ export namespace Prisma {
 
   export type RagDocumentAvgAggregateOutputType = {
     id: number | null
-    userId: number | null
     pageCount: number | null
     chunkCount: number | null
+    userId: number | null
   }
 
   export type RagDocumentSumAggregateOutputType = {
     id: number | null
-    userId: number | null
     pageCount: number | null
     chunkCount: number | null
+    userId: number | null
   }
 
   export type RagDocumentMinAggregateOutputType = {
     id: number | null
-    userId: number | null
     filename: string | null
     originalName: string | null
     pageCount: number | null
     chunkCount: number | null
     status: string | null
     createdAt: Date | null
+    userId: number | null
   }
 
   export type RagDocumentMaxAggregateOutputType = {
     id: number | null
-    userId: number | null
     filename: string | null
     originalName: string | null
     pageCount: number | null
     chunkCount: number | null
     status: string | null
     createdAt: Date | null
+    userId: number | null
   }
 
   export type RagDocumentCountAggregateOutputType = {
     id: number
-    userId: number
     filename: number
     originalName: number
     pageCount: number
     chunkCount: number
     status: number
     createdAt: number
+    userId: number
     _all: number
   }
 
 
   export type RagDocumentAvgAggregateInputType = {
     id?: true
-    userId?: true
     pageCount?: true
     chunkCount?: true
+    userId?: true
   }
 
   export type RagDocumentSumAggregateInputType = {
     id?: true
-    userId?: true
     pageCount?: true
     chunkCount?: true
+    userId?: true
   }
 
   export type RagDocumentMinAggregateInputType = {
     id?: true
-    userId?: true
     filename?: true
     originalName?: true
     pageCount?: true
     chunkCount?: true
     status?: true
     createdAt?: true
+    userId?: true
   }
 
   export type RagDocumentMaxAggregateInputType = {
     id?: true
-    userId?: true
     filename?: true
     originalName?: true
     pageCount?: true
     chunkCount?: true
     status?: true
     createdAt?: true
+    userId?: true
   }
 
   export type RagDocumentCountAggregateInputType = {
     id?: true
-    userId?: true
     filename?: true
     originalName?: true
     pageCount?: true
     chunkCount?: true
     status?: true
     createdAt?: true
+    userId?: true
     _all?: true
   }
 
@@ -1406,13 +1497,13 @@ export namespace Prisma {
 
   export type RagDocumentGroupByOutputType = {
     id: number
-    userId: number
     filename: string
     originalName: string
     pageCount: number | null
     chunkCount: number
     status: string
     createdAt: Date
+    userId: number | null
     _count: RagDocumentCountAggregateOutputType | null
     _avg: RagDocumentAvgAggregateOutputType | null
     _sum: RagDocumentSumAggregateOutputType | null
@@ -1436,14 +1527,14 @@ export namespace Prisma {
 
   export type RagDocumentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     filename?: boolean
     originalName?: boolean
     pageCount?: boolean
     chunkCount?: boolean
     status?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | RagDocument$userArgs<ExtArgs>
     chunks?: boolean | RagDocument$chunksArgs<ExtArgs>
     conversations?: boolean | RagDocument$conversationsArgs<ExtArgs>
     _count?: boolean | RagDocumentCountOutputTypeDefaultArgs<ExtArgs>
@@ -1451,69 +1542,69 @@ export namespace Prisma {
 
   export type RagDocumentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     filename?: boolean
     originalName?: boolean
     pageCount?: boolean
     chunkCount?: boolean
     status?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | RagDocument$userArgs<ExtArgs>
   }, ExtArgs["result"]["ragDocument"]>
 
   export type RagDocumentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
     filename?: boolean
     originalName?: boolean
     pageCount?: boolean
     chunkCount?: boolean
     status?: boolean
     createdAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    userId?: boolean
+    user?: boolean | RagDocument$userArgs<ExtArgs>
   }, ExtArgs["result"]["ragDocument"]>
 
   export type RagDocumentSelectScalar = {
     id?: boolean
-    userId?: boolean
     filename?: boolean
     originalName?: boolean
     pageCount?: boolean
     chunkCount?: boolean
     status?: boolean
     createdAt?: boolean
+    userId?: boolean
   }
 
-  export type RagDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "filename" | "originalName" | "pageCount" | "chunkCount" | "status" | "createdAt", ExtArgs["result"]["ragDocument"]>
+  export type RagDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "filename" | "originalName" | "pageCount" | "chunkCount" | "status" | "createdAt" | "userId", ExtArgs["result"]["ragDocument"]>
   export type RagDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | RagDocument$userArgs<ExtArgs>
     chunks?: boolean | RagDocument$chunksArgs<ExtArgs>
     conversations?: boolean | RagDocument$conversationsArgs<ExtArgs>
     _count?: boolean | RagDocumentCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type RagDocumentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | RagDocument$userArgs<ExtArgs>
   }
   export type RagDocumentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | RagDocument$userArgs<ExtArgs>
   }
 
   export type $RagDocumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "RagDocument"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs> | null
       chunks: Prisma.$RagChunkPayload<ExtArgs>[]
       conversations: Prisma.$RagConversationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      userId: number
       filename: string
       originalName: string
       pageCount: number | null
       chunkCount: number
       status: string
       createdAt: Date
+      userId: number | null
     }, ExtArgs["result"]["ragDocument"]>
     composites: {}
   }
@@ -1908,7 +1999,7 @@ export namespace Prisma {
    */
   export interface Prisma__RagDocumentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends RagDocument$userArgs<ExtArgs> = {}>(args?: Subset<T, RagDocument$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     chunks<T extends RagDocument$chunksArgs<ExtArgs> = {}>(args?: Subset<T, RagDocument$chunksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RagChunkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     conversations<T extends RagDocument$conversationsArgs<ExtArgs> = {}>(args?: Subset<T, RagDocument$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RagConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -1941,13 +2032,13 @@ export namespace Prisma {
    */
   interface RagDocumentFieldRefs {
     readonly id: FieldRef<"RagDocument", 'Int'>
-    readonly userId: FieldRef<"RagDocument", 'Int'>
     readonly filename: FieldRef<"RagDocument", 'String'>
     readonly originalName: FieldRef<"RagDocument", 'String'>
     readonly pageCount: FieldRef<"RagDocument", 'Int'>
     readonly chunkCount: FieldRef<"RagDocument", 'Int'>
     readonly status: FieldRef<"RagDocument", 'String'>
     readonly createdAt: FieldRef<"RagDocument", 'DateTime'>
+    readonly userId: FieldRef<"RagDocument", 'Int'>
   }
     
 
@@ -2346,6 +2437,25 @@ export namespace Prisma {
      * Limit how many RagDocuments to delete.
      */
     limit?: number
+  }
+
+  /**
+   * RagDocument.user
+   */
+  export type RagDocument$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -4652,6 +4762,1164 @@ export namespace Prisma {
 
 
   /**
+   * Model CodeReview
+   */
+
+  export type AggregateCodeReview = {
+    _count: CodeReviewCountAggregateOutputType | null
+    _avg: CodeReviewAvgAggregateOutputType | null
+    _sum: CodeReviewSumAggregateOutputType | null
+    _min: CodeReviewMinAggregateOutputType | null
+    _max: CodeReviewMaxAggregateOutputType | null
+  }
+
+  export type CodeReviewAvgAggregateOutputType = {
+    id: number | null
+    bugCount: number | null
+    securityCount: number | null
+    perfCount: number | null
+    qualityCount: number | null
+    bestPracticeCount: number | null
+  }
+
+  export type CodeReviewSumAggregateOutputType = {
+    id: number | null
+    bugCount: number | null
+    securityCount: number | null
+    perfCount: number | null
+    qualityCount: number | null
+    bestPracticeCount: number | null
+  }
+
+  export type CodeReviewMinAggregateOutputType = {
+    id: number | null
+    language: string | null
+    code: string | null
+    summary: string | null
+    findings: string | null
+    overallSeverity: string | null
+    bugCount: number | null
+    securityCount: number | null
+    perfCount: number | null
+    qualityCount: number | null
+    bestPracticeCount: number | null
+    status: string | null
+    createdAt: Date | null
+  }
+
+  export type CodeReviewMaxAggregateOutputType = {
+    id: number | null
+    language: string | null
+    code: string | null
+    summary: string | null
+    findings: string | null
+    overallSeverity: string | null
+    bugCount: number | null
+    securityCount: number | null
+    perfCount: number | null
+    qualityCount: number | null
+    bestPracticeCount: number | null
+    status: string | null
+    createdAt: Date | null
+  }
+
+  export type CodeReviewCountAggregateOutputType = {
+    id: number
+    language: number
+    code: number
+    summary: number
+    findings: number
+    overallSeverity: number
+    bugCount: number
+    securityCount: number
+    perfCount: number
+    qualityCount: number
+    bestPracticeCount: number
+    status: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CodeReviewAvgAggregateInputType = {
+    id?: true
+    bugCount?: true
+    securityCount?: true
+    perfCount?: true
+    qualityCount?: true
+    bestPracticeCount?: true
+  }
+
+  export type CodeReviewSumAggregateInputType = {
+    id?: true
+    bugCount?: true
+    securityCount?: true
+    perfCount?: true
+    qualityCount?: true
+    bestPracticeCount?: true
+  }
+
+  export type CodeReviewMinAggregateInputType = {
+    id?: true
+    language?: true
+    code?: true
+    summary?: true
+    findings?: true
+    overallSeverity?: true
+    bugCount?: true
+    securityCount?: true
+    perfCount?: true
+    qualityCount?: true
+    bestPracticeCount?: true
+    status?: true
+    createdAt?: true
+  }
+
+  export type CodeReviewMaxAggregateInputType = {
+    id?: true
+    language?: true
+    code?: true
+    summary?: true
+    findings?: true
+    overallSeverity?: true
+    bugCount?: true
+    securityCount?: true
+    perfCount?: true
+    qualityCount?: true
+    bestPracticeCount?: true
+    status?: true
+    createdAt?: true
+  }
+
+  export type CodeReviewCountAggregateInputType = {
+    id?: true
+    language?: true
+    code?: true
+    summary?: true
+    findings?: true
+    overallSeverity?: true
+    bugCount?: true
+    securityCount?: true
+    perfCount?: true
+    qualityCount?: true
+    bestPracticeCount?: true
+    status?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CodeReviewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CodeReview to aggregate.
+     */
+    where?: CodeReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeReviews to fetch.
+     */
+    orderBy?: CodeReviewOrderByWithRelationInput | CodeReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CodeReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeReviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CodeReviews
+    **/
+    _count?: true | CodeReviewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CodeReviewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CodeReviewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CodeReviewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CodeReviewMaxAggregateInputType
+  }
+
+  export type GetCodeReviewAggregateType<T extends CodeReviewAggregateArgs> = {
+        [P in keyof T & keyof AggregateCodeReview]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCodeReview[P]>
+      : GetScalarType<T[P], AggregateCodeReview[P]>
+  }
+
+
+
+
+  export type CodeReviewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CodeReviewWhereInput
+    orderBy?: CodeReviewOrderByWithAggregationInput | CodeReviewOrderByWithAggregationInput[]
+    by: CodeReviewScalarFieldEnum[] | CodeReviewScalarFieldEnum
+    having?: CodeReviewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CodeReviewCountAggregateInputType | true
+    _avg?: CodeReviewAvgAggregateInputType
+    _sum?: CodeReviewSumAggregateInputType
+    _min?: CodeReviewMinAggregateInputType
+    _max?: CodeReviewMaxAggregateInputType
+  }
+
+  export type CodeReviewGroupByOutputType = {
+    id: number
+    language: string
+    code: string
+    summary: string | null
+    findings: string | null
+    overallSeverity: string | null
+    bugCount: number
+    securityCount: number
+    perfCount: number
+    qualityCount: number
+    bestPracticeCount: number
+    status: string
+    createdAt: Date
+    _count: CodeReviewCountAggregateOutputType | null
+    _avg: CodeReviewAvgAggregateOutputType | null
+    _sum: CodeReviewSumAggregateOutputType | null
+    _min: CodeReviewMinAggregateOutputType | null
+    _max: CodeReviewMaxAggregateOutputType | null
+  }
+
+  type GetCodeReviewGroupByPayload<T extends CodeReviewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CodeReviewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CodeReviewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CodeReviewGroupByOutputType[P]>
+            : GetScalarType<T[P], CodeReviewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CodeReviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    language?: boolean
+    code?: boolean
+    summary?: boolean
+    findings?: boolean
+    overallSeverity?: boolean
+    bugCount?: boolean
+    securityCount?: boolean
+    perfCount?: boolean
+    qualityCount?: boolean
+    bestPracticeCount?: boolean
+    status?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["codeReview"]>
+
+  export type CodeReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    language?: boolean
+    code?: boolean
+    summary?: boolean
+    findings?: boolean
+    overallSeverity?: boolean
+    bugCount?: boolean
+    securityCount?: boolean
+    perfCount?: boolean
+    qualityCount?: boolean
+    bestPracticeCount?: boolean
+    status?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["codeReview"]>
+
+  export type CodeReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    language?: boolean
+    code?: boolean
+    summary?: boolean
+    findings?: boolean
+    overallSeverity?: boolean
+    bugCount?: boolean
+    securityCount?: boolean
+    perfCount?: boolean
+    qualityCount?: boolean
+    bestPracticeCount?: boolean
+    status?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["codeReview"]>
+
+  export type CodeReviewSelectScalar = {
+    id?: boolean
+    language?: boolean
+    code?: boolean
+    summary?: boolean
+    findings?: boolean
+    overallSeverity?: boolean
+    bugCount?: boolean
+    securityCount?: boolean
+    perfCount?: boolean
+    qualityCount?: boolean
+    bestPracticeCount?: boolean
+    status?: boolean
+    createdAt?: boolean
+  }
+
+  export type CodeReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "language" | "code" | "summary" | "findings" | "overallSeverity" | "bugCount" | "securityCount" | "perfCount" | "qualityCount" | "bestPracticeCount" | "status" | "createdAt", ExtArgs["result"]["codeReview"]>
+
+  export type $CodeReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CodeReview"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      language: string
+      code: string
+      summary: string | null
+      findings: string | null
+      overallSeverity: string | null
+      bugCount: number
+      securityCount: number
+      perfCount: number
+      qualityCount: number
+      bestPracticeCount: number
+      status: string
+      createdAt: Date
+    }, ExtArgs["result"]["codeReview"]>
+    composites: {}
+  }
+
+  type CodeReviewGetPayload<S extends boolean | null | undefined | CodeReviewDefaultArgs> = $Result.GetResult<Prisma.$CodeReviewPayload, S>
+
+  type CodeReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CodeReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CodeReviewCountAggregateInputType | true
+    }
+
+  export interface CodeReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CodeReview'], meta: { name: 'CodeReview' } }
+    /**
+     * Find zero or one CodeReview that matches the filter.
+     * @param {CodeReviewFindUniqueArgs} args - Arguments to find a CodeReview
+     * @example
+     * // Get one CodeReview
+     * const codeReview = await prisma.codeReview.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CodeReviewFindUniqueArgs>(args: SelectSubset<T, CodeReviewFindUniqueArgs<ExtArgs>>): Prisma__CodeReviewClient<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CodeReview that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CodeReviewFindUniqueOrThrowArgs} args - Arguments to find a CodeReview
+     * @example
+     * // Get one CodeReview
+     * const codeReview = await prisma.codeReview.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CodeReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, CodeReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CodeReviewClient<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CodeReview that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeReviewFindFirstArgs} args - Arguments to find a CodeReview
+     * @example
+     * // Get one CodeReview
+     * const codeReview = await prisma.codeReview.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CodeReviewFindFirstArgs>(args?: SelectSubset<T, CodeReviewFindFirstArgs<ExtArgs>>): Prisma__CodeReviewClient<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CodeReview that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeReviewFindFirstOrThrowArgs} args - Arguments to find a CodeReview
+     * @example
+     * // Get one CodeReview
+     * const codeReview = await prisma.codeReview.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CodeReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, CodeReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__CodeReviewClient<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CodeReviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeReviewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CodeReviews
+     * const codeReviews = await prisma.codeReview.findMany()
+     * 
+     * // Get first 10 CodeReviews
+     * const codeReviews = await prisma.codeReview.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const codeReviewWithIdOnly = await prisma.codeReview.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CodeReviewFindManyArgs>(args?: SelectSubset<T, CodeReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CodeReview.
+     * @param {CodeReviewCreateArgs} args - Arguments to create a CodeReview.
+     * @example
+     * // Create one CodeReview
+     * const CodeReview = await prisma.codeReview.create({
+     *   data: {
+     *     // ... data to create a CodeReview
+     *   }
+     * })
+     * 
+     */
+    create<T extends CodeReviewCreateArgs>(args: SelectSubset<T, CodeReviewCreateArgs<ExtArgs>>): Prisma__CodeReviewClient<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CodeReviews.
+     * @param {CodeReviewCreateManyArgs} args - Arguments to create many CodeReviews.
+     * @example
+     * // Create many CodeReviews
+     * const codeReview = await prisma.codeReview.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CodeReviewCreateManyArgs>(args?: SelectSubset<T, CodeReviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CodeReviews and returns the data saved in the database.
+     * @param {CodeReviewCreateManyAndReturnArgs} args - Arguments to create many CodeReviews.
+     * @example
+     * // Create many CodeReviews
+     * const codeReview = await prisma.codeReview.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CodeReviews and only return the `id`
+     * const codeReviewWithIdOnly = await prisma.codeReview.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CodeReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, CodeReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CodeReview.
+     * @param {CodeReviewDeleteArgs} args - Arguments to delete one CodeReview.
+     * @example
+     * // Delete one CodeReview
+     * const CodeReview = await prisma.codeReview.delete({
+     *   where: {
+     *     // ... filter to delete one CodeReview
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CodeReviewDeleteArgs>(args: SelectSubset<T, CodeReviewDeleteArgs<ExtArgs>>): Prisma__CodeReviewClient<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CodeReview.
+     * @param {CodeReviewUpdateArgs} args - Arguments to update one CodeReview.
+     * @example
+     * // Update one CodeReview
+     * const codeReview = await prisma.codeReview.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CodeReviewUpdateArgs>(args: SelectSubset<T, CodeReviewUpdateArgs<ExtArgs>>): Prisma__CodeReviewClient<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CodeReviews.
+     * @param {CodeReviewDeleteManyArgs} args - Arguments to filter CodeReviews to delete.
+     * @example
+     * // Delete a few CodeReviews
+     * const { count } = await prisma.codeReview.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CodeReviewDeleteManyArgs>(args?: SelectSubset<T, CodeReviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CodeReviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeReviewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CodeReviews
+     * const codeReview = await prisma.codeReview.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CodeReviewUpdateManyArgs>(args: SelectSubset<T, CodeReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CodeReviews and returns the data updated in the database.
+     * @param {CodeReviewUpdateManyAndReturnArgs} args - Arguments to update many CodeReviews.
+     * @example
+     * // Update many CodeReviews
+     * const codeReview = await prisma.codeReview.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CodeReviews and only return the `id`
+     * const codeReviewWithIdOnly = await prisma.codeReview.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CodeReviewUpdateManyAndReturnArgs>(args: SelectSubset<T, CodeReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CodeReview.
+     * @param {CodeReviewUpsertArgs} args - Arguments to update or create a CodeReview.
+     * @example
+     * // Update or create a CodeReview
+     * const codeReview = await prisma.codeReview.upsert({
+     *   create: {
+     *     // ... data to create a CodeReview
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CodeReview we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CodeReviewUpsertArgs>(args: SelectSubset<T, CodeReviewUpsertArgs<ExtArgs>>): Prisma__CodeReviewClient<$Result.GetResult<Prisma.$CodeReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CodeReviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeReviewCountArgs} args - Arguments to filter CodeReviews to count.
+     * @example
+     * // Count the number of CodeReviews
+     * const count = await prisma.codeReview.count({
+     *   where: {
+     *     // ... the filter for the CodeReviews we want to count
+     *   }
+     * })
+    **/
+    count<T extends CodeReviewCountArgs>(
+      args?: Subset<T, CodeReviewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CodeReviewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CodeReview.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeReviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CodeReviewAggregateArgs>(args: Subset<T, CodeReviewAggregateArgs>): Prisma.PrismaPromise<GetCodeReviewAggregateType<T>>
+
+    /**
+     * Group by CodeReview.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CodeReviewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CodeReviewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CodeReviewGroupByArgs['orderBy'] }
+        : { orderBy?: CodeReviewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CodeReviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCodeReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CodeReview model
+   */
+  readonly fields: CodeReviewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CodeReview.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CodeReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CodeReview model
+   */
+  interface CodeReviewFieldRefs {
+    readonly id: FieldRef<"CodeReview", 'Int'>
+    readonly language: FieldRef<"CodeReview", 'String'>
+    readonly code: FieldRef<"CodeReview", 'String'>
+    readonly summary: FieldRef<"CodeReview", 'String'>
+    readonly findings: FieldRef<"CodeReview", 'String'>
+    readonly overallSeverity: FieldRef<"CodeReview", 'String'>
+    readonly bugCount: FieldRef<"CodeReview", 'Int'>
+    readonly securityCount: FieldRef<"CodeReview", 'Int'>
+    readonly perfCount: FieldRef<"CodeReview", 'Int'>
+    readonly qualityCount: FieldRef<"CodeReview", 'Int'>
+    readonly bestPracticeCount: FieldRef<"CodeReview", 'Int'>
+    readonly status: FieldRef<"CodeReview", 'String'>
+    readonly createdAt: FieldRef<"CodeReview", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CodeReview findUnique
+   */
+  export type CodeReviewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * Filter, which CodeReview to fetch.
+     */
+    where: CodeReviewWhereUniqueInput
+  }
+
+  /**
+   * CodeReview findUniqueOrThrow
+   */
+  export type CodeReviewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * Filter, which CodeReview to fetch.
+     */
+    where: CodeReviewWhereUniqueInput
+  }
+
+  /**
+   * CodeReview findFirst
+   */
+  export type CodeReviewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * Filter, which CodeReview to fetch.
+     */
+    where?: CodeReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeReviews to fetch.
+     */
+    orderBy?: CodeReviewOrderByWithRelationInput | CodeReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CodeReviews.
+     */
+    cursor?: CodeReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeReviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CodeReviews.
+     */
+    distinct?: CodeReviewScalarFieldEnum | CodeReviewScalarFieldEnum[]
+  }
+
+  /**
+   * CodeReview findFirstOrThrow
+   */
+  export type CodeReviewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * Filter, which CodeReview to fetch.
+     */
+    where?: CodeReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeReviews to fetch.
+     */
+    orderBy?: CodeReviewOrderByWithRelationInput | CodeReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CodeReviews.
+     */
+    cursor?: CodeReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeReviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CodeReviews.
+     */
+    distinct?: CodeReviewScalarFieldEnum | CodeReviewScalarFieldEnum[]
+  }
+
+  /**
+   * CodeReview findMany
+   */
+  export type CodeReviewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * Filter, which CodeReviews to fetch.
+     */
+    where?: CodeReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CodeReviews to fetch.
+     */
+    orderBy?: CodeReviewOrderByWithRelationInput | CodeReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CodeReviews.
+     */
+    cursor?: CodeReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CodeReviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CodeReviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CodeReviews.
+     */
+    distinct?: CodeReviewScalarFieldEnum | CodeReviewScalarFieldEnum[]
+  }
+
+  /**
+   * CodeReview create
+   */
+  export type CodeReviewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * The data needed to create a CodeReview.
+     */
+    data: XOR<CodeReviewCreateInput, CodeReviewUncheckedCreateInput>
+  }
+
+  /**
+   * CodeReview createMany
+   */
+  export type CodeReviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CodeReviews.
+     */
+    data: CodeReviewCreateManyInput | CodeReviewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CodeReview createManyAndReturn
+   */
+  export type CodeReviewCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * The data used to create many CodeReviews.
+     */
+    data: CodeReviewCreateManyInput | CodeReviewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CodeReview update
+   */
+  export type CodeReviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * The data needed to update a CodeReview.
+     */
+    data: XOR<CodeReviewUpdateInput, CodeReviewUncheckedUpdateInput>
+    /**
+     * Choose, which CodeReview to update.
+     */
+    where: CodeReviewWhereUniqueInput
+  }
+
+  /**
+   * CodeReview updateMany
+   */
+  export type CodeReviewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CodeReviews.
+     */
+    data: XOR<CodeReviewUpdateManyMutationInput, CodeReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which CodeReviews to update
+     */
+    where?: CodeReviewWhereInput
+    /**
+     * Limit how many CodeReviews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CodeReview updateManyAndReturn
+   */
+  export type CodeReviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * The data used to update CodeReviews.
+     */
+    data: XOR<CodeReviewUpdateManyMutationInput, CodeReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which CodeReviews to update
+     */
+    where?: CodeReviewWhereInput
+    /**
+     * Limit how many CodeReviews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CodeReview upsert
+   */
+  export type CodeReviewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * The filter to search for the CodeReview to update in case it exists.
+     */
+    where: CodeReviewWhereUniqueInput
+    /**
+     * In case the CodeReview found by the `where` argument doesn't exist, create a new CodeReview with this data.
+     */
+    create: XOR<CodeReviewCreateInput, CodeReviewUncheckedCreateInput>
+    /**
+     * In case the CodeReview was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CodeReviewUpdateInput, CodeReviewUncheckedUpdateInput>
+  }
+
+  /**
+   * CodeReview delete
+   */
+  export type CodeReviewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+    /**
+     * Filter which CodeReview to delete.
+     */
+    where: CodeReviewWhereUniqueInput
+  }
+
+  /**
+   * CodeReview deleteMany
+   */
+  export type CodeReviewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CodeReviews to delete
+     */
+    where?: CodeReviewWhereInput
+    /**
+     * Limit how many CodeReviews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CodeReview without action
+   */
+  export type CodeReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CodeReview
+     */
+    select?: CodeReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CodeReview
+     */
+    omit?: CodeReviewOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model User
    */
 
@@ -5776,13 +7044,13 @@ export namespace Prisma {
 
   export const RagDocumentScalarFieldEnum: {
     id: 'id',
-    userId: 'userId',
     filename: 'filename',
     originalName: 'originalName',
     pageCount: 'pageCount',
     chunkCount: 'chunkCount',
     status: 'status',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    userId: 'userId'
   };
 
   export type RagDocumentScalarFieldEnum = (typeof RagDocumentScalarFieldEnum)[keyof typeof RagDocumentScalarFieldEnum]
@@ -5810,6 +7078,25 @@ export namespace Prisma {
   };
 
   export type RagConversationScalarFieldEnum = (typeof RagConversationScalarFieldEnum)[keyof typeof RagConversationScalarFieldEnum]
+
+
+  export const CodeReviewScalarFieldEnum: {
+    id: 'id',
+    language: 'language',
+    code: 'code',
+    summary: 'summary',
+    findings: 'findings',
+    overallSeverity: 'overallSeverity',
+    bugCount: 'bugCount',
+    securityCount: 'securityCount',
+    perfCount: 'perfCount',
+    qualityCount: 'qualityCount',
+    bestPracticeCount: 'bestPracticeCount',
+    status: 'status',
+    createdAt: 'createdAt'
+  };
+
+  export type CodeReviewScalarFieldEnum = (typeof CodeReviewScalarFieldEnum)[keyof typeof CodeReviewScalarFieldEnum]
 
 
   export const UserScalarFieldEnum: {
@@ -5916,27 +7203,27 @@ export namespace Prisma {
     OR?: RagDocumentWhereInput[]
     NOT?: RagDocumentWhereInput | RagDocumentWhereInput[]
     id?: IntFilter<"RagDocument"> | number
-    userId?: IntFilter<"RagDocument"> | number
     filename?: StringFilter<"RagDocument"> | string
     originalName?: StringFilter<"RagDocument"> | string
     pageCount?: IntNullableFilter<"RagDocument"> | number | null
     chunkCount?: IntFilter<"RagDocument"> | number
     status?: StringFilter<"RagDocument"> | string
     createdAt?: DateTimeFilter<"RagDocument"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    userId?: IntNullableFilter<"RagDocument"> | number | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     chunks?: RagChunkListRelationFilter
     conversations?: RagConversationListRelationFilter
   }
 
   export type RagDocumentOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrder
     filename?: SortOrder
     originalName?: SortOrder
     pageCount?: SortOrderInput | SortOrder
     chunkCount?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     chunks?: RagChunkOrderByRelationAggregateInput
     conversations?: RagConversationOrderByRelationAggregateInput
@@ -5947,27 +7234,27 @@ export namespace Prisma {
     AND?: RagDocumentWhereInput | RagDocumentWhereInput[]
     OR?: RagDocumentWhereInput[]
     NOT?: RagDocumentWhereInput | RagDocumentWhereInput[]
-    userId?: IntFilter<"RagDocument"> | number
     filename?: StringFilter<"RagDocument"> | string
     originalName?: StringFilter<"RagDocument"> | string
     pageCount?: IntNullableFilter<"RagDocument"> | number | null
     chunkCount?: IntFilter<"RagDocument"> | number
     status?: StringFilter<"RagDocument"> | string
     createdAt?: DateTimeFilter<"RagDocument"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    userId?: IntNullableFilter<"RagDocument"> | number | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     chunks?: RagChunkListRelationFilter
     conversations?: RagConversationListRelationFilter
   }, "id">
 
   export type RagDocumentOrderByWithAggregationInput = {
     id?: SortOrder
-    userId?: SortOrder
     filename?: SortOrder
     originalName?: SortOrder
     pageCount?: SortOrderInput | SortOrder
     chunkCount?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrderInput | SortOrder
     _count?: RagDocumentCountOrderByAggregateInput
     _avg?: RagDocumentAvgOrderByAggregateInput
     _max?: RagDocumentMaxOrderByAggregateInput
@@ -5980,13 +7267,13 @@ export namespace Prisma {
     OR?: RagDocumentScalarWhereWithAggregatesInput[]
     NOT?: RagDocumentScalarWhereWithAggregatesInput | RagDocumentScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"RagDocument"> | number
-    userId?: IntWithAggregatesFilter<"RagDocument"> | number
     filename?: StringWithAggregatesFilter<"RagDocument"> | string
     originalName?: StringWithAggregatesFilter<"RagDocument"> | string
     pageCount?: IntNullableWithAggregatesFilter<"RagDocument"> | number | null
     chunkCount?: IntWithAggregatesFilter<"RagDocument"> | number
     status?: StringWithAggregatesFilter<"RagDocument"> | string
     createdAt?: DateTimeWithAggregatesFilter<"RagDocument"> | Date | string
+    userId?: IntNullableWithAggregatesFilter<"RagDocument"> | number | null
   }
 
   export type RagChunkWhereInput = {
@@ -6113,6 +7400,100 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"RagConversation"> | Date | string
   }
 
+  export type CodeReviewWhereInput = {
+    AND?: CodeReviewWhereInput | CodeReviewWhereInput[]
+    OR?: CodeReviewWhereInput[]
+    NOT?: CodeReviewWhereInput | CodeReviewWhereInput[]
+    id?: IntFilter<"CodeReview"> | number
+    language?: StringFilter<"CodeReview"> | string
+    code?: StringFilter<"CodeReview"> | string
+    summary?: StringNullableFilter<"CodeReview"> | string | null
+    findings?: StringNullableFilter<"CodeReview"> | string | null
+    overallSeverity?: StringNullableFilter<"CodeReview"> | string | null
+    bugCount?: IntFilter<"CodeReview"> | number
+    securityCount?: IntFilter<"CodeReview"> | number
+    perfCount?: IntFilter<"CodeReview"> | number
+    qualityCount?: IntFilter<"CodeReview"> | number
+    bestPracticeCount?: IntFilter<"CodeReview"> | number
+    status?: StringFilter<"CodeReview"> | string
+    createdAt?: DateTimeFilter<"CodeReview"> | Date | string
+  }
+
+  export type CodeReviewOrderByWithRelationInput = {
+    id?: SortOrder
+    language?: SortOrder
+    code?: SortOrder
+    summary?: SortOrderInput | SortOrder
+    findings?: SortOrderInput | SortOrder
+    overallSeverity?: SortOrderInput | SortOrder
+    bugCount?: SortOrder
+    securityCount?: SortOrder
+    perfCount?: SortOrder
+    qualityCount?: SortOrder
+    bestPracticeCount?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CodeReviewWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CodeReviewWhereInput | CodeReviewWhereInput[]
+    OR?: CodeReviewWhereInput[]
+    NOT?: CodeReviewWhereInput | CodeReviewWhereInput[]
+    language?: StringFilter<"CodeReview"> | string
+    code?: StringFilter<"CodeReview"> | string
+    summary?: StringNullableFilter<"CodeReview"> | string | null
+    findings?: StringNullableFilter<"CodeReview"> | string | null
+    overallSeverity?: StringNullableFilter<"CodeReview"> | string | null
+    bugCount?: IntFilter<"CodeReview"> | number
+    securityCount?: IntFilter<"CodeReview"> | number
+    perfCount?: IntFilter<"CodeReview"> | number
+    qualityCount?: IntFilter<"CodeReview"> | number
+    bestPracticeCount?: IntFilter<"CodeReview"> | number
+    status?: StringFilter<"CodeReview"> | string
+    createdAt?: DateTimeFilter<"CodeReview"> | Date | string
+  }, "id">
+
+  export type CodeReviewOrderByWithAggregationInput = {
+    id?: SortOrder
+    language?: SortOrder
+    code?: SortOrder
+    summary?: SortOrderInput | SortOrder
+    findings?: SortOrderInput | SortOrder
+    overallSeverity?: SortOrderInput | SortOrder
+    bugCount?: SortOrder
+    securityCount?: SortOrder
+    perfCount?: SortOrder
+    qualityCount?: SortOrder
+    bestPracticeCount?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    _count?: CodeReviewCountOrderByAggregateInput
+    _avg?: CodeReviewAvgOrderByAggregateInput
+    _max?: CodeReviewMaxOrderByAggregateInput
+    _min?: CodeReviewMinOrderByAggregateInput
+    _sum?: CodeReviewSumOrderByAggregateInput
+  }
+
+  export type CodeReviewScalarWhereWithAggregatesInput = {
+    AND?: CodeReviewScalarWhereWithAggregatesInput | CodeReviewScalarWhereWithAggregatesInput[]
+    OR?: CodeReviewScalarWhereWithAggregatesInput[]
+    NOT?: CodeReviewScalarWhereWithAggregatesInput | CodeReviewScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CodeReview"> | number
+    language?: StringWithAggregatesFilter<"CodeReview"> | string
+    code?: StringWithAggregatesFilter<"CodeReview"> | string
+    summary?: StringNullableWithAggregatesFilter<"CodeReview"> | string | null
+    findings?: StringNullableWithAggregatesFilter<"CodeReview"> | string | null
+    overallSeverity?: StringNullableWithAggregatesFilter<"CodeReview"> | string | null
+    bugCount?: IntWithAggregatesFilter<"CodeReview"> | number
+    securityCount?: IntWithAggregatesFilter<"CodeReview"> | number
+    perfCount?: IntWithAggregatesFilter<"CodeReview"> | number
+    qualityCount?: IntWithAggregatesFilter<"CodeReview"> | number
+    bestPracticeCount?: IntWithAggregatesFilter<"CodeReview"> | number
+    status?: StringWithAggregatesFilter<"CodeReview"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CodeReview"> | Date | string
+  }
+
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -6177,20 +7558,20 @@ export namespace Prisma {
     chunkCount?: number
     status?: string
     createdAt?: Date | string
-    user: UserCreateNestedOneWithoutDocumentsInput
+    user?: UserCreateNestedOneWithoutDocumentsInput
     chunks?: RagChunkCreateNestedManyWithoutDocumentInput
     conversations?: RagConversationCreateNestedManyWithoutDocumentInput
   }
 
   export type RagDocumentUncheckedCreateInput = {
     id?: number
-    userId: number
     filename: string
     originalName: string
     pageCount?: number | null
     chunkCount?: number
     status?: string
     createdAt?: Date | string
+    userId?: number | null
     chunks?: RagChunkUncheckedCreateNestedManyWithoutDocumentInput
     conversations?: RagConversationUncheckedCreateNestedManyWithoutDocumentInput
   }
@@ -6202,33 +7583,33 @@ export namespace Prisma {
     chunkCount?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutDocumentsNestedInput
+    user?: UserUpdateOneWithoutDocumentsNestedInput
     chunks?: RagChunkUpdateManyWithoutDocumentNestedInput
     conversations?: RagConversationUpdateManyWithoutDocumentNestedInput
   }
 
   export type RagDocumentUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
     filename?: StringFieldUpdateOperationsInput | string
     originalName?: StringFieldUpdateOperationsInput | string
     pageCount?: NullableIntFieldUpdateOperationsInput | number | null
     chunkCount?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     chunks?: RagChunkUncheckedUpdateManyWithoutDocumentNestedInput
     conversations?: RagConversationUncheckedUpdateManyWithoutDocumentNestedInput
   }
 
   export type RagDocumentCreateManyInput = {
     id?: number
-    userId: number
     filename: string
     originalName: string
     pageCount?: number | null
     chunkCount?: number
     status?: string
     createdAt?: Date | string
+    userId?: number | null
   }
 
   export type RagDocumentUpdateManyMutationInput = {
@@ -6242,13 +7623,13 @@ export namespace Prisma {
 
   export type RagDocumentUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
     filename?: StringFieldUpdateOperationsInput | string
     originalName?: StringFieldUpdateOperationsInput | string
     pageCount?: NullableIntFieldUpdateOperationsInput | number | null
     chunkCount?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type RagChunkCreateInput = {
@@ -6369,6 +7750,115 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CodeReviewCreateInput = {
+    language: string
+    code: string
+    summary?: string | null
+    findings?: string | null
+    overallSeverity?: string | null
+    bugCount?: number
+    securityCount?: number
+    perfCount?: number
+    qualityCount?: number
+    bestPracticeCount?: number
+    status?: string
+    createdAt?: Date | string
+  }
+
+  export type CodeReviewUncheckedCreateInput = {
+    id?: number
+    language: string
+    code: string
+    summary?: string | null
+    findings?: string | null
+    overallSeverity?: string | null
+    bugCount?: number
+    securityCount?: number
+    perfCount?: number
+    qualityCount?: number
+    bestPracticeCount?: number
+    status?: string
+    createdAt?: Date | string
+  }
+
+  export type CodeReviewUpdateInput = {
+    language?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    findings?: NullableStringFieldUpdateOperationsInput | string | null
+    overallSeverity?: NullableStringFieldUpdateOperationsInput | string | null
+    bugCount?: IntFieldUpdateOperationsInput | number
+    securityCount?: IntFieldUpdateOperationsInput | number
+    perfCount?: IntFieldUpdateOperationsInput | number
+    qualityCount?: IntFieldUpdateOperationsInput | number
+    bestPracticeCount?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CodeReviewUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    language?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    findings?: NullableStringFieldUpdateOperationsInput | string | null
+    overallSeverity?: NullableStringFieldUpdateOperationsInput | string | null
+    bugCount?: IntFieldUpdateOperationsInput | number
+    securityCount?: IntFieldUpdateOperationsInput | number
+    perfCount?: IntFieldUpdateOperationsInput | number
+    qualityCount?: IntFieldUpdateOperationsInput | number
+    bestPracticeCount?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CodeReviewCreateManyInput = {
+    id?: number
+    language: string
+    code: string
+    summary?: string | null
+    findings?: string | null
+    overallSeverity?: string | null
+    bugCount?: number
+    securityCount?: number
+    perfCount?: number
+    qualityCount?: number
+    bestPracticeCount?: number
+    status?: string
+    createdAt?: Date | string
+  }
+
+  export type CodeReviewUpdateManyMutationInput = {
+    language?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    findings?: NullableStringFieldUpdateOperationsInput | string | null
+    overallSeverity?: NullableStringFieldUpdateOperationsInput | string | null
+    bugCount?: IntFieldUpdateOperationsInput | number
+    securityCount?: IntFieldUpdateOperationsInput | number
+    perfCount?: IntFieldUpdateOperationsInput | number
+    qualityCount?: IntFieldUpdateOperationsInput | number
+    bestPracticeCount?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CodeReviewUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    language?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    findings?: NullableStringFieldUpdateOperationsInput | string | null
+    overallSeverity?: NullableStringFieldUpdateOperationsInput | string | null
+    bugCount?: IntFieldUpdateOperationsInput | number
+    securityCount?: IntFieldUpdateOperationsInput | number
+    perfCount?: IntFieldUpdateOperationsInput | number
+    qualityCount?: IntFieldUpdateOperationsInput | number
+    bestPracticeCount?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateInput = {
     email: string
     password: string
@@ -6474,9 +7964,9 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
   }
 
   export type RagChunkListRelationFilter = {
@@ -6506,49 +7996,49 @@ export namespace Prisma {
 
   export type RagDocumentCountOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     filename?: SortOrder
     originalName?: SortOrder
     pageCount?: SortOrder
     chunkCount?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type RagDocumentAvgOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     pageCount?: SortOrder
     chunkCount?: SortOrder
+    userId?: SortOrder
   }
 
   export type RagDocumentMaxOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     filename?: SortOrder
     originalName?: SortOrder
     pageCount?: SortOrder
     chunkCount?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type RagDocumentMinOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     filename?: SortOrder
     originalName?: SortOrder
     pageCount?: SortOrder
     chunkCount?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
+    userId?: SortOrder
   }
 
   export type RagDocumentSumOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     pageCount?: SortOrder
     chunkCount?: SortOrder
+    userId?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -6731,6 +8221,72 @@ export namespace Prisma {
     documentId?: SortOrder
   }
 
+  export type CodeReviewCountOrderByAggregateInput = {
+    id?: SortOrder
+    language?: SortOrder
+    code?: SortOrder
+    summary?: SortOrder
+    findings?: SortOrder
+    overallSeverity?: SortOrder
+    bugCount?: SortOrder
+    securityCount?: SortOrder
+    perfCount?: SortOrder
+    qualityCount?: SortOrder
+    bestPracticeCount?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CodeReviewAvgOrderByAggregateInput = {
+    id?: SortOrder
+    bugCount?: SortOrder
+    securityCount?: SortOrder
+    perfCount?: SortOrder
+    qualityCount?: SortOrder
+    bestPracticeCount?: SortOrder
+  }
+
+  export type CodeReviewMaxOrderByAggregateInput = {
+    id?: SortOrder
+    language?: SortOrder
+    code?: SortOrder
+    summary?: SortOrder
+    findings?: SortOrder
+    overallSeverity?: SortOrder
+    bugCount?: SortOrder
+    securityCount?: SortOrder
+    perfCount?: SortOrder
+    qualityCount?: SortOrder
+    bestPracticeCount?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CodeReviewMinOrderByAggregateInput = {
+    id?: SortOrder
+    language?: SortOrder
+    code?: SortOrder
+    summary?: SortOrder
+    findings?: SortOrder
+    overallSeverity?: SortOrder
+    bugCount?: SortOrder
+    securityCount?: SortOrder
+    perfCount?: SortOrder
+    qualityCount?: SortOrder
+    bestPracticeCount?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CodeReviewSumOrderByAggregateInput = {
+    id?: SortOrder
+    bugCount?: SortOrder
+    securityCount?: SortOrder
+    perfCount?: SortOrder
+    qualityCount?: SortOrder
+    bestPracticeCount?: SortOrder
+  }
+
   export type RagDocumentListRelationFilter = {
     every?: RagDocumentWhereInput
     some?: RagDocumentWhereInput
@@ -6831,10 +8387,12 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type UserUpdateOneRequiredWithoutDocumentsNestedInput = {
+  export type UserUpdateOneWithoutDocumentsNestedInput = {
     create?: XOR<UserCreateWithoutDocumentsInput, UserUncheckedCreateWithoutDocumentsInput>
     connectOrCreate?: UserCreateOrConnectWithoutDocumentsInput
     upsert?: UserUpsertWithoutDocumentsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDocumentsInput, UserUpdateWithoutDocumentsInput>, UserUncheckedUpdateWithoutDocumentsInput>
   }
@@ -7291,19 +8849,19 @@ export namespace Prisma {
     chunkCount?: number
     status?: string
     createdAt?: Date | string
-    user: UserCreateNestedOneWithoutDocumentsInput
+    user?: UserCreateNestedOneWithoutDocumentsInput
     conversations?: RagConversationCreateNestedManyWithoutDocumentInput
   }
 
   export type RagDocumentUncheckedCreateWithoutChunksInput = {
     id?: number
-    userId: number
     filename: string
     originalName: string
     pageCount?: number | null
     chunkCount?: number
     status?: string
     createdAt?: Date | string
+    userId?: number | null
     conversations?: RagConversationUncheckedCreateNestedManyWithoutDocumentInput
   }
 
@@ -7330,19 +8888,19 @@ export namespace Prisma {
     chunkCount?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutDocumentsNestedInput
+    user?: UserUpdateOneWithoutDocumentsNestedInput
     conversations?: RagConversationUpdateManyWithoutDocumentNestedInput
   }
 
   export type RagDocumentUncheckedUpdateWithoutChunksInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
     filename?: StringFieldUpdateOperationsInput | string
     originalName?: StringFieldUpdateOperationsInput | string
     pageCount?: NullableIntFieldUpdateOperationsInput | number | null
     chunkCount?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     conversations?: RagConversationUncheckedUpdateManyWithoutDocumentNestedInput
   }
 
@@ -7353,19 +8911,19 @@ export namespace Prisma {
     chunkCount?: number
     status?: string
     createdAt?: Date | string
-    user: UserCreateNestedOneWithoutDocumentsInput
+    user?: UserCreateNestedOneWithoutDocumentsInput
     chunks?: RagChunkCreateNestedManyWithoutDocumentInput
   }
 
   export type RagDocumentUncheckedCreateWithoutConversationsInput = {
     id?: number
-    userId: number
     filename: string
     originalName: string
     pageCount?: number | null
     chunkCount?: number
     status?: string
     createdAt?: Date | string
+    userId?: number | null
     chunks?: RagChunkUncheckedCreateNestedManyWithoutDocumentInput
   }
 
@@ -7392,19 +8950,19 @@ export namespace Prisma {
     chunkCount?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutDocumentsNestedInput
+    user?: UserUpdateOneWithoutDocumentsNestedInput
     chunks?: RagChunkUpdateManyWithoutDocumentNestedInput
   }
 
   export type RagDocumentUncheckedUpdateWithoutConversationsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
     filename?: StringFieldUpdateOperationsInput | string
     originalName?: StringFieldUpdateOperationsInput | string
     pageCount?: NullableIntFieldUpdateOperationsInput | number | null
     chunkCount?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
     chunks?: RagChunkUncheckedUpdateManyWithoutDocumentNestedInput
   }
 
@@ -7462,13 +9020,13 @@ export namespace Prisma {
     OR?: RagDocumentScalarWhereInput[]
     NOT?: RagDocumentScalarWhereInput | RagDocumentScalarWhereInput[]
     id?: IntFilter<"RagDocument"> | number
-    userId?: IntFilter<"RagDocument"> | number
     filename?: StringFilter<"RagDocument"> | string
     originalName?: StringFilter<"RagDocument"> | string
     pageCount?: IntNullableFilter<"RagDocument"> | number | null
     chunkCount?: IntFilter<"RagDocument"> | number
     status?: StringFilter<"RagDocument"> | string
     createdAt?: DateTimeFilter<"RagDocument"> | Date | string
+    userId?: IntNullableFilter<"RagDocument"> | number | null
   }
 
   export type RagChunkCreateManyDocumentInput = {
