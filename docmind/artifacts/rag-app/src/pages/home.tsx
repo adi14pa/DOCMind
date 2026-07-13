@@ -153,7 +153,7 @@ export default function Home() {
             <Button
               variant="outline"
               onClick={async () => {
-                await fetch("http://localhost:8000/api/auth/logout", {
+                await fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {
                   method: "POST",
                   credentials: "include",
                 });
