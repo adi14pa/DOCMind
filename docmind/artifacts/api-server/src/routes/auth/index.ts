@@ -8,6 +8,7 @@ import { requireAuth, AuthRequest } from "../../middlewares/auth";
 const router = Router();
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret_key";
+const isProduction = process.env.NODE_ENV === "production";
 
 router.post("/register", async (req, res) => {
   try {
@@ -54,8 +55,9 @@ router.post("/register", async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: isProduction,
+      sameSite: isProduction ? "none" : "lax",
+      path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     console.log("COOKIE SET", token);
@@ -117,8 +119,9 @@ router.post("/login", async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: isProduction,
+      sameSite: isProduction ? "none" : "lax",
+      path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
      console.log("COOKIE SET", token);
@@ -141,7 +144,12 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  res.clearCookie("token");
+ res.clearCookie("token", {
+   httpOnly: true,
+   secure: isProduction,
+   sameSite: isProduction ? "none" : "lax",
+   path: "/",
+ });
 
   res.json({
     message: "Logged out",
